@@ -1,0 +1,12 @@
+{
+  "config": {
+    "dataset": "Inspection Results",
+    "url": "https://app.communitycore.com",
+    "start_date": "2023-11-01",
+    "end_date": "2023-12-01"
+  },
+  "env": {
+    "community_core_username": "",
+    "community_core_password": ""
+  }
+}

@@ -77,10 +77,10 @@ def load_config(file_path):
     start_date = sub_config.get("start_date", None)
     end_date = sub_config.get("end_date", None)
 
-    community_core_username = raw_config.get("env", None).get(
+    community_core_username = raw_config.get(
         "community_core_username", None
     )
-    community_core_password = raw_config.get("env", None).get(
+    community_core_password = raw_config.get(
         "community_core_password", None
     )
 

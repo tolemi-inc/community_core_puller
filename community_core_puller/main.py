@@ -25,7 +25,7 @@ def run(config):
     account_id = communityCoreScraper.get_account_id(access_token)
     jurisdiction_id = communityCoreScraper.get_jurisdiction_id(access_token, account_id)
     report_id = communityCoreScraper.get_report_id(
-        access_token, config.dataset, account_id
+        access_token, config.dataset_name, account_id
     )
     communityCoreScraper.get_report_filters(
         access_token,
@@ -41,14 +41,14 @@ def run(config):
         account_id,
         jurisdiction_id,
         report_id,
-        config.dataset,
         config.start_date,
         config.end_date,
+        config.dataset
     )
 
     output_object = {
         "status": "ok",
-        "file_name": f"community_core_puller/data/{config.dataset.lower().replace(' ', '_')}.csv",
+        "file_name": f"{config.dataset}",
         "columns": headers_dict,
     }
     print("DONE", json.dumps(output_object))
@@ -73,6 +73,7 @@ def load_config(file_path):
     sub_config = raw_config.get("config", {})
 
     dataset = sub_config.get("dataset", None)
+    dataset_name = sub_config.get("dataset_name", None)
     start_date = sub_config.get("start_date", None)
     end_date = sub_config.get("end_date", None)
 
@@ -84,7 +85,7 @@ def load_config(file_path):
     )
 
     return Config(
-        dataset, start_date, end_date, community_core_username, community_core_password
+        dataset, dataset_name, start_date, end_date, community_core_username, community_core_password
     )
 
 

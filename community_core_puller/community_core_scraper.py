@@ -130,9 +130,9 @@ class CommunityCoreScraper:
         account_id,
         jurisdiction_id,
         dataset_id,
-        dataset,
         start_date,
         end_date,
+        dataset
     ):
         url = f"{self.base_url}/api/v1/office/{account_id}/report/{dataset_id}/run"
         headers = {
@@ -146,7 +146,7 @@ class CommunityCoreScraper:
 
         response = self.make_api_call("PUT", url, headers, json.dumps(payload))
 
-        csv_file_path = dataset.lower().replace(" ", "_") + ".csv"
+        csv_file_path = dataset
         headers = self.create_csv(response.text, csv_file_path)
 
         headers_dict = [{"name": header, "type": "VARCHAR"} for header in headers]

@@ -117,7 +117,7 @@ class CommunityCoreScraper:
         headers = next(csv_reader)
         dict_data = [dict(zip(headers, row)) for row in csv_reader]
 
-        with open(f"community_core_puller/data/{path}", "w", newline="") as csvfile:
+        with open(f"{path}", "w", newline="") as csvfile:
             csv_writer = csv.DictWriter(csvfile, fieldnames=headers)
             csv_writer.writeheader()
             csv_writer.writerows(dict_data)

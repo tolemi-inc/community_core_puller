@@ -72,15 +72,15 @@ def load_config(file_path):
 
     sub_config = raw_config.get("config", {})
 
-    dataset = sub_config.get("dataset", None)
+    dataset = raw_config.get('dataFilePath', None)
     dataset_name = sub_config.get("dataset_name", None)
     start_date = sub_config.get("start_date", None)
     end_date = sub_config.get("end_date", None)
 
-    community_core_username = raw_config.get(
+    community_core_username = sub_config.get(
         "community_core_username", None
     )
-    community_core_password = raw_config.get(
+    community_core_password = sub_config.get(
         "community_core_password", None
     )
 

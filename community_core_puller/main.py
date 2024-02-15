@@ -5,6 +5,7 @@ import json
 import traceback
 import argparse
 import logging
+from datetime import datetime, timedelta
 
 parser = argparse.ArgumentParser(description="Process inputs for community core pulls")
 
@@ -74,8 +75,15 @@ def load_config(file_path):
 
     dataset = raw_config.get('dataFilePath', None)
     dataset_name = sub_config.get("dataset_name", None)
-    start_date = sub_config.get("start_date", None)
-    end_date = sub_config.get("end_date", None)
+
+    current_date = datetime.now()
+    today_string = current_date.strftime('%Y-%m-%d')  
+    one_month_ago = current_date - timedelta(days=30)
+    one_month_ago_string = one_month_ago.date().strftime('%Y-%m-%d')
+
+    start_date = sub_config.get("start_date", one_month_ago_string)
+    end_date = sub_config.get("end_date", today_string)
+
 
     community_core_username = sub_config.get(
         "community_core_username", None

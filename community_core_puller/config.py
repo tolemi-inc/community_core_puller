@@ -5,12 +5,14 @@ class Config:
     def __init__(
         self,
         dataset,
+        dataset_name,
         start_date,
         end_date,
         community_core_username,
         community_core_password,
     ):
         self.dataset = dataset
+        self.dataset_name = dataset_name
         self.start_date = start_date
         self.end_date = end_date
         self.community_core_username = community_core_username
@@ -23,9 +25,20 @@ class Config:
     @dataset.setter
     def dataset(self, value):
         if value is None:
-            raise ConfigError("Missing dataset name in config.")
+            raise ConfigError("Missing dataset path in config.")
         else:
             self._dataset = value
+
+    @property
+    def dataset_name(self):
+        return self._dataset_name
+
+    @dataset_name.setter
+    def dataset_name(self, value):
+        if value is None:
+            raise ConfigError("Missing dataset name in config.")
+        else:
+            self._dataset_name = value
 
     @property
     def start_date(self):

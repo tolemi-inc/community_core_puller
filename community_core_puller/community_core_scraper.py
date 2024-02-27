@@ -117,7 +117,7 @@ class CommunityCoreScraper:
         headers = next(csv_reader)
         dict_data = [dict(zip(headers, row)) for row in csv_reader]
 
-        with open(f"community_core_puller/data/{path}", "w", newline="") as csvfile:
+        with open(f"{path}", "w", newline="") as csvfile:
             csv_writer = csv.DictWriter(csvfile, fieldnames=headers)
             csv_writer.writeheader()
             csv_writer.writerows(dict_data)
@@ -130,9 +130,9 @@ class CommunityCoreScraper:
         account_id,
         jurisdiction_id,
         dataset_id,
-        dataset,
         start_date,
         end_date,
+        dataset
     ):
         url = f"{self.base_url}/api/v1/office/{account_id}/report/{dataset_id}/run"
         headers = {
@@ -146,7 +146,7 @@ class CommunityCoreScraper:
 
         response = self.make_api_call("PUT", url, headers, json.dumps(payload))
 
-        csv_file_path = dataset.lower().replace(" ", "_") + ".csv"
+        csv_file_path = dataset
         headers = self.create_csv(response.text, csv_file_path)
 
         headers_dict = [{"name": header.lower().replace(' ', '_'), "type": "VARCHAR"} for header in headers]

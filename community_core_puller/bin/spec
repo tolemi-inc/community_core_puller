@@ -4,37 +4,39 @@ cat <<EOF
 {
     "type": "SPEC",
     "spec": {
-        "title": "ScriptName",
+        "title": "Community Core Container",
         "type": "object",
         "properties": {
-            "attributeOne": {
+            "dataset_name": {
                 "type": "dictionary",
                 "custom": {
                     "options": [
                         {
-                            "label": "OptionOne",
-                            "value": "option_one"
+                            "label": "Inspection Results",
+                            "value": "Inspection Results"
                         },
                         {
-                            "label": "OptionTwo",
-                            "value": "option_two"
+                            "label": "Code Enforcement Activity List",
+                            "value": "Code Enforcement Activity List"
                         },
                         {
-                            "label": "OptionThree",
-                            "value": "option_three"
+                            "label": "Permit Detail",
+                            "value": "Permit Detail"
                         }
                     ]
                 }
             },
-            "attributeTwo": {
-                "type": "boolean",
-                "defaultValue": "false"
+            "start_date": {
+                "type": "string"
             },
-            "attributeThree":{
+            "end_date": {
+                "type": "string"
+            },
+            "community_core_username": {
                 "type": "secret"
             },
-            "attributeFour":{
-                "type": "string"
+            "community_core_password": {
+                "type": "secret"
             }
         }
     }

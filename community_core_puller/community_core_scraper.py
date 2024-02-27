@@ -149,5 +149,5 @@ class CommunityCoreScraper:
         csv_file_path = dataset.lower().replace(" ", "_") + ".csv"
         headers = self.create_csv(response.text, csv_file_path)
 
-        headers_dict = [{"name": header, "type": "VARCHAR"} for header in headers]
+        headers_dict = [{"name": header.lower().replace(' ', '_'), "type": "VARCHAR"} for header in headers]
         return headers_dict

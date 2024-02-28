@@ -97,6 +97,8 @@ class CommunityCoreScraper:
         for filter in response.json():
             if filter["filterCriteriaId"] == 1:
                 value = {"startDate": start_date, "endDate": end_date}
+            if filter["filterCriteriaId"] == 2:
+                value = {"jurisdictionIds": [jurisdiction_id]}
             if filter["filterCriteriaId"] == 3:
                 value = {"jurisdictionId": jurisdiction_id}
             if filter["filterCriteriaId"] == 9:

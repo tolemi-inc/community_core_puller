@@ -121,7 +121,6 @@ class CommunityCoreScraper:
 
         with open(f"{path}", "w", newline="") as csvfile:
             csv_writer = csv.DictWriter(csvfile, fieldnames=headers)
-            csv_writer.writeheader()
             csv_writer.writerows(dict_data)
 
         return headers

@@ -76,7 +76,7 @@ class CommunityCoreScraper:
         report_id = next(
             (
                 category["id"]
-                for category in response.json()["Value"]
+                for category in response.json()
                 if category["name"].strip() == report_name
             ),
             None,
